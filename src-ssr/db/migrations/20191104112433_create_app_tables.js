@@ -1,5 +1,5 @@
 
-exports.up = function(knex, Promise) {
+exports.up = function(knex) {
     return Promise.all([
         knex.schema.createTable('users', (table) => {
             table.increments();
@@ -36,12 +36,12 @@ exports.up = function(knex, Promise) {
     ])
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function(knex) {
     return Promise.all([
-        knex.schema.dropTableIfExists('users'),
-        knex.schema.dropTableIfExists('categories'),
+        knex.schema.dropTableIfExists('posts_tags'),
         knex.schema.dropTableIfExists('posts'),
         knex.schema.dropTableIfExists('tags'),
-        knex.schema.dropTableIfExists('posts_tags')
+        knex.schema.dropTableIfExists('categories'),
+        knex.schema.dropTableIfExists('users')
     ]);
 };
